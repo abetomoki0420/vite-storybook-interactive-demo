@@ -17,7 +17,7 @@
       </div>
       <div class="grid gap-4 mt-8">
         <template v-if="todos.length">
-          <div v-for="todo in todos" :key="todo.id">
+          <div v-for="(todo, index) in todos" :key="todo.id">
             <div class="p-2 bg-gray-100 rounded-md flex justify-between">
               <div>
                 <span :class="{ 'text-blue-400': todo.checked }"
@@ -28,6 +28,7 @@
               </div>
               <div
                 class="text-red-500 cursor-pointer"
+                :data-testId="`todo-delete-${index}`"
                 @click="removeTodo(todo.id)"
               >
                 delete!
